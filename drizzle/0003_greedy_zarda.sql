@@ -1,0 +1,1 @@
+ALTER TABLE "usuarios_empresas" ADD COLUMN "crear_cajero" boolean DEFAULT false NOT NULL;

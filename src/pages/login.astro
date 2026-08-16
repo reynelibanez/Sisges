@@ -1,0 +1,13 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import LoginForm from "@/components/LoginForm";
+
+// Si ya hay sesión completa, no tiene sentido mostrar el login de nuevo.
+if (Astro.locals.user) {
+  return Astro.redirect("/dashboard");
+}
+---
+
+<BaseLayout title="Iniciar sesión — SisGes">
+  <LoginForm client:load />
+</BaseLayout>

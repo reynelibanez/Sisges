@@ -1,0 +1,217 @@
+idproducto,Producto,Referencia,Pcosto,Pventa,Foto,UM,RutaImagen,Elaborado
+1,"Pepsi","Refresco",0,1000,,11,"openFileDialog1",1
+2,"Malta Bucanero","Malta",0,1050,,11,"openFileDialog1",0
+4,"Cerveza Cristal Botella","Cerveza Nacional",0,1500,,13,"openFileDialog1",0
+9,"Agua Purificada Nativa","APN",0,500,,12,"openFileDialog1",1
+10,"Seven Up","RSUP",0,650,,11,"openFileDialog1",0
+11,"Malta Morena","MM",0,700,,11,"openFileDialog1",0
+13,"Cerveza Matz","CM",0,750,,11,"openFileDialog1",0
+14,"Café expreso","CE",0,1050,,12,"openFileDialog1",1
+15,"Pepsi","Refresco",150,250,,,,0
+16,"Agua Ciego Montero","ACM",0,700,,1,"openFileDialog1",0
+17,"Mini espumoso P Chenet","EPC",0,1200,,13,"openFileDialog1",0
+18,"Malta Hollandia","MH",0,700,,11,"openFileDialog1",1
+19,"Cerveza Mahou","cm",0,750,,11,"openFileDialog1",1
+20,"Cerveza Cristal","Cerveza Nacional",200,450,,,,0
+21,"Refresco de Limón Ciego Montero","RL",0,450,,11,"openFileDialog1",0
+22,"Agua Ciego Montero","ACM",85,250,,,,0
+23,"Malta Morena","MM",170,400,,,,0
+25,"Agua Ciego Montero","ACM",80,250,,,,0
+26,"cerveza cristal Extra","extra",0,750,,1,"openFileDialog1",0
+27,"cerveza Staaberg","cerveza",0,750,,1,"openFileDialog1",0
+28,"cerveza bavaria","bavaria",0,750,,1,"openFileDialog1",0
+29,"Cerveza Cristal","Cerveza Nacional",220,450,,,,0
+30,"Pepsi","Refresco",190,400,,,,0
+31,"Seven Up","RSUP",190,400,,,,0
+32,"Refresco Naranja Lata","RN",0,450,,11,"openFileDialog1",0
+33,"Malta Bucanero","Malta Bucanero",250,500,,,,0
+34,"Spirit Vodka con Naranja","SVN",0,600,,13,"openFileDialog1",0
+35,"Agua Ciego Montero","ACM",150,350,,,,0
+36,"Refresco Coca Cola ","RCCL",0,800,,11,"openFileDialog1",0
+37,"Refresco Sprite","RSPT",0,800,,11,"openFileDialog1",0
+38,"Refresco Fanta","RFT",0,800,,11,"openFileDialog1",0
+40,"Copa Vino Blanco","CVB",0,800,,11,"openFileDialog1",0
+41,"Copa Vino Tinto","CVT",0,800,,11,"openFileDialog1",0
+42,"AGUA NATURAL MEXICO","AGM",0,500,,13,"openFileDialog1",0
+43,"Malta HYPER","MLH",0,850,,11,"openFileDialog1",0
+44,"Refresco TuKola","rtkl",0,600,,11,"openFileDialog1",0
+46,"Vino espumoso","VE",7000,14000,,,,0
+47,"Botella Vino Blanco","BVB",0,9000,,13,"openFileDialog1",0
+48,"Té","TE",0,850,,1,"openFileDialog1",1
+49,"Cerveza Cristal","Cerveza Nacional",250,500,,,,0
+50,"Agua natural Niágara","ANi",0,700,,13,"openFileDialog1",0
+51,"Malta Cara","MC",0,700,,11,"openFileDialog1",0
+52,"Croissant Natural","CRN",0,1150,,1,"openFileDialog1",1
+53,"Croissant Queso","CRQ",0,1800,,1,"openFileDialog1",0
+55,"Croissant Jamón y Queso","CRJQ",0,2150,,1,"openFileDialog1",0
+57,"Bocatta QUESO","BTQ",0,880,,1,"openFileDialog1",1
+58,"Bocatta JAMON y QUESO","BTJQ",0,1000,,1,"openFileDialog1",1
+59,"Bocatta JAMON","BTJ",0,920,,1,"openFileDialog1",1
+60,"Croissant de Jamón","CRJ",0,1000,,1,"openFileDialog1",1
+61,"Dona Chocolate","DNCH",0,750,,1,"openFileDialog1",1
+62,"Dona Caramelo","DNCL",0,750,,1,"openFileDialog1",1
+63,"Croissant Natural","CRN",206,800,,,,0
+64,"Frapucchino","FRCH",0,1650,,1,"openFileDialog1",1
+65,"Café Bombón","CFBM",0,1400,,1,"openFileDialog1",1
+66,"Cerveza Sol","CVS",0,750,,13,"openFileDialog1",0
+67,"Croissant Nutella","CRNTlla",0,1650,,1,"openFileDialog1",0
+68,"Croissant Nutella","CRNTlla",284.125,880,,,,0
+69,"Malta Kara","MalK",0,700,,11,"openFileDialog1",0
+70,"SevenUp","7up",0,650,,11,"openFileDialog1",0
+71,"Cerveza Nacional","CVZN",0,750,,11,"openFileDialog1",0
+72,"Cerveza Importada","CVZIM",0,750,,11,"openFileDialog1",0
+73,"Malta","MLTA",0,700,,11,"openFileDialog1",0
+75,"Agua Gaseada","AGSD",400,800,,,,0
+76,"Vaso desechable","VD",0,50,,1,"openFileDialog1",0
+77,"Bolsa de cartucho","BCT",0,100,,1,"openFileDialog1",0
+78,"Jugo natural","JN",0,850,,1,"openFileDialog1",0
+79,"Agua Ciego Montero","ACM",150,600,,,,0
+80,"Bizcocho de banana","BB",0,600,,1,"openFileDialog1",1
+81,"Muffin de limón","MFL",0,600,,1,"openFileDialog1",1
+82,"Surtido Especialidades Mini","SEM",0,700,,1,"openFileDialog1",0
+83,"Pañuelo Frankfurt","PÑF",0,950,,1,"openFileDialog1",0
+84,"Cookies Colores","CKS",0,950,,1,"openFileDialog1",0
+85,"Xuxo Crema","CCD",0,700,,1,"openFileDialog1",0
+86,"Triángulo de queso","TrQue",0,700,,1,"openFileDialog1",0
+87,"Empanadilla criolla argentina","EmpArg",0,950,,1,"openFileDialog1",0
+88,"Napolitana Bombón","NapBom",0,700,,1,"openFileDialog1",0
+89,"Pañuelo carbonara","PañCarb",0,950,,1,"openFileDialog1",0
+90,"Muffin Fusion","MufFus",0,950,,1,"openFileDialog1",0
+91,"Delicias Variadas","DV",0,180,,1,"openFileDialog1",1
+92,"Jugo de Piña","JP",0,850,,1,"openFileDialog1",1
+94,"Jugo de Frutabomba","JFT",0,850,,1,"openFileDialog1",1
+95,"Jugo de Mango","JM",0,850,,1,"openFileDialog1",0
+96,"Jugo de Piña","JP",533,600,,,,0
+97,"Pepsi","Refresco",178,750,,,,0
+98,"Cerveza Cristal","Cerveza Nacional",190,750,,,,0
+99,"Jugo de Piña","JP",285,600,,,,0
+100,"Agua Ciego Montero","ACM",150,600,,,,0
+101,"Jugo de Piña","JP",0,600,,,,0
+102,"Jugo de Mango","JM",0,600,,,,0
+103,"Jugo de Melón","JM",0,600,,,,0
+104,"Frapucchino","FRCH",0,1150,,,,0
+105,"Bocatta JAMON","BTJ",0,920,,,,0
+106,"Croissant Jamón y Queso","CRJQ",0,1200,,,,0
+107,"Bolsa de cartucho","BCT",15,50,,,,0
+108,"Malta","MLTA",247.5,700,,,,0
+109,"TRENZA CREMA Y MANZANA","TCM",0,600,,1,"openFileDialog1",0
+110,"Napolitana Bombón","NapBom",162.2,600,,,,0
+111,"Café Capuchino","CCH",0,850,,,,0
+112,"Jugo de Piña","JP",0,600,,,,0
+113,"Café cortado","CFC",0,750,,,,0
+114,"Media Napolitana","MedNap",0,350,,1,"openFileDialog1",0
+115,"Jugo de Frutabomba","JFT",0,600,,,,0
+116,"Café expreso","CE",0,600,,,,0
+117,"Croissant Jamón y Queso","CRJQ",0,1200,,,,0
+118,"Frapucchino","FRCH",0,1150,,,,0
+119,"Baguette de Jamón y Queso","BJQ",0,1900,,1,"openFileDialog1",0
+120,"Croissant Natural","CRN",0,750,,,,0
+121,"Agua Laguna Azul","ALA",0,600,,1,"openFileDialog1",0
+122,"Croissant Natural","CRN",0,750,,,,0
+123,"Roulette Cheescake","RCH",0,700,,1,"openFileDialog1",0
+124,"Cookies Colores","CKS",489.6,950,,,,0
+125,"Agua natural Niágara","ANNi",0,500,,,,0
+126,"Agua Ciego Montero","ACM",0,500,,,,0
+127,"Frapucchino","FRCH",0,1150,,,,0
+128,"Croissant Queso","CRQ",0,950,,,,0
+129,"Jugo de Piña","JP",0,600,,,,0
+130,"Jugo de Piña","JP",0,600,,,,0
+131,"Jugo de guayaba","JuGyb",0,850,,1,"openFileDialog1",0
+132,"Croissant Natural","CRN",0,750,,,,0
+133,"Agrego doble queso","agrdobqueso",0,100,,1,"openFileDialog1",0
+135,"Croissant de Chocolate con Chispas","CroChoc",0,500,,1,"openFileDialog1",0
+136,"Pañuelo carbonara","PañCarb",0,950,,,,0
+137,"Bolsa de cartucho","BCT",0,50,,,,0
+138,"Jugo de Piña","JP",0,600,,,,0
+139,"Pepsi","Refresco",0,750,,,,0
+140,"Cerveza Belga","CerBel",0,750,,1,"openFileDialog1",0
+141,"Malta Vanpur","MalVan",0,700,,1,"openFileDialog1",0
+142,"Agua Deus","AguaDeus",0,600,,1,"openFileDialog1",0
+143,"SevenUp","7up",0,650,,,,0
+144,"Surtido Especialidades Mini","SEM",0,700,,,,0
+145,"Jugo de Melón","JM",0,600,,,,0
+146,"Malta Bucanero","Malta Bucanero",250,700,,,,0
+147,"Frapucchino","FRCH",0,1150,,,,0
+148,"Delicias Variadas","DV",0,180,,,,0
+149,"Croissant relleno de chocolate blanco","crorellchocblan",0,500,,1,"openFileDialog1",0
+150,"Panecillo de Queso","PQ",0,1300,,1,"openFileDialog1",1
+151,"Agua Monderiz","AMR",0,600,,1,"openFileDialog1",0
+152,"Red Bull","rdb",0,900,,11,"openFileDialog1",0
+153,"Cerveza Belga Star","Belga",0,750,,11,"openFileDialog1",0
+154,"Cerveza belga Star Botella","Belgabotella",0,750,,13,"openFileDialog1",0
+155,"Cerveza Labat Blue","labat",0,750,,11,"openFileDialog1",0
+156,"Cerveza Hollandia","Cerveza internacional",0,750,,,,0
+157,"Jugo de Melón","JM",0,600,,,,0
+158,"Empanadilla Calzone","EmCal",0,750,,1,"openFileDialog1",0
+159,"Napolitana Bombón","NapBom",0,700,,,,0
+160,"Empanadilla criolla argentina","EmpArg",0,950,,,,0
+161,"Agua Buona","AgBuona",0,600,,1,"openFileDialog1",0
+162,"Donas Blanco y negro","DoBlayN",0,1400,,1,"openFileDialog1",0
+163,"Roulette Cheescake","RCH",0,700,,,,0
+164,"Agua Monderiz Grande","AMG",0,600,,1,"openFileDialog1",0
+165,"Croissant con semillas","crosem",0,650,,1,"openFileDialog1",0
+166,"Agua Monderiz","AMR",0,600,,,,0
+167,"Agua Aquadeus","aqd",0,600,,1,"openFileDialog1",0
+168,"Línea de Ron Santiago 12 años","LRS",0,4080,,1,"openFileDialog1",0
+169,"Agua Monderiz","AMR",180,600,,,,0
+170,"Jugo de Frutabomba","JFT",0,600,,,,0
+171,"Baguette de Jamón y Doble Queso","BJQQ",0,1500,,1,"openFileDialog1",0
+172,"Agua Deus","AguaDeus",196.08,600,,,,0
+173,"Croissant Nutella","CRNTlla",0,1250,,,,0
+174,"Agua natural Niágara","ANNi",180,500,,,,0
+175,"Jugo de Mango","JM",0,600,,,,0
+176,"Jugo de Frutabomba","JFT",0,600,,,,0
+177,"Pepsi","Refresco",0,650,,,,0
+178,"Mirinda","RefMir",0,950,,11,"openFileDialog1",0
+179,"Jugo de Mango","JM",0,600,,,,0
+180,"Cerveza Cristal","Cerveza Nacional",0,750,,,,0
+181,"Agua de Coco 500 ML","ACC",0,2200,,1,"openFileDialog1",0
+182,"Agua de Coco","ACC",0,600,,,,0
+183,"Pepsi","Refresco",0,650,,,,0
+184,"Malta Bucanero","Malta Bucanero",0,700,,,,0
+185,"Dona Chocolate","DNCH",0,750,,,,0
+186,"Dona Roll Bombom","DRB",0,750,,1,"openFileDialog1",0
+187,"Xuxo Crema","CCD",0,700,,,,0
+188,"Frapucchino","FRCH",0,1150,,,,0
+189,"Cerveza Unlaguer","CUL",0,750,,1,"openFileDialog1",0
+190,"Café Bombón","CFBM",0,950,,,,0
+192,"Mini Pizza York","MP",0,1500,,1,"openFileDialog1",0
+193,"Bocapizza","BP",0,1700,,1,"openFileDialog1",0
+194,"Muffin Zanahoria","MF",0,1600,,1,"openFileDialog1",0
+195,"Muffin Nueces","MN",0,1600,,1,"openFileDialog1",0
+196,"Muffin Chocolate","MC",0,1950,,1,"openFileDialog1",0
+197,"Dots Chocolate","DC",0,1100,,1,"openFileDialog1",0
+198,"Dots Glaseada","DG",0,1050,,1,"openFileDialog1",0
+199,"Dots Pink","DP",0,1150,,1,"openFileDialog1",0
+200,"Dots Crunchy","DC",0,1150,,1,"openFileDialog1",0
+202,"Agua de coco 1L","AC1L",0,2000,,1,"openFileDialog1",0
+203,"Cafe Capuchino ","CC",0,1500,,1,"openFileDialog1",0
+204,"Cafe cortado","CFC",0,1150,,1,"openFileDialog1",0
+205,"Cafe expreso","CFE",0,950,,1,"openFileDialog1",0
+206,"Cabello  Angel","CBA",0,1400,,1,"openFileDialog1",0
+207,"Cafe Bombom","CB",0,1400,,1,"openFileDialog1",0
+208,"Dots Pepitas","DP",0,1400,,1,"openFileDialog1",0
+210,"Agua Coco 500 ml","AC5",0,2000,,1,"openFileDialog1",0
+211,"Pepsi de botella","PB",0,650,,1,"openFileDialog1",0
+212,"Malta Burge Meester","MBM",0,850,,1,"openFileDialog1",0
+213,"Vaso desechable plástico","VDP",0,100,,1,"openFileDialog1",0
+214,"Croissant Cacao","CCA",0,1400,,1,"openFileDialog1",0
+215,"Paletica de helado","PH",0,950,,1,"openFileDialog1",0
+216,"Muffins Arándano ","MA",0,1950,,1,"openFileDialog1",0
+217,"Muffins Red Velvet","MRV",0,1950,,1,"openFileDialog1",0
+218,"Empanada de atún ","EmA",0,2000,,1,"openFileDialog1",0
+219,"Agua Sultán ","ASul",0,600,,1,"openFileDialog1",0
+220,"Agua Gaseada Tehuacán ","AGT",0,1150,,1,"openFileDialog1",0
+221,"Agua Dea","AD",0,600,,1,"openFileDialog1",0
+222,"Tiggon","Tig",0,900,,1,"openFileDialog1",0
+223,"Cabello Angel Chocolate","CAC",0,1400,,1,"openFileDialog1",0
+224,"Agua Natural Río Blanco","ARB",0,850,,1,"openFileDialog1",0
+225,"Café con Leche","CLech",0,1500,,1,"openFileDialog1",1
+229,"Jugo de Piña","JPiña",0,850,,1,"openFileDialog1",0
+230,"Jugo de Guayaba","JG",0,850,,1,"openFileDialog1",0
+232,"Agua Gaseada Sultan 200ml","AG2ML",0,850,,1,"openFileDialog1",0
+233,"Jugo de Melón","JMe",0,850,,1,"openFileDialog1",1
+234,"Cerveza 3 Horses Premiun Lager Beer","Cer",0,1000,,1,"openFileDialog1",0
+235,"TINTE","134",0,300,,1,"openFileDialog1",0
+236,"PEROXIDO","1432",0,4.5,,1,"openFileDialog1",0
+237,"OTRAS COSAS DE TINTE","5Y54",0,15,,1,"openFileDialog1",0

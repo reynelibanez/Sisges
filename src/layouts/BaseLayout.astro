@@ -1,0 +1,33 @@
+---
+import "@/styles/global.css";
+
+interface Props {
+  title?: string;
+}
+
+const { title = "SisGes Web" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <script is:inline>
+      // Se aplica antes de pintar la página (evita el parpadeo de tema
+      // incorrecto al cargar). Recuerda la preferencia en localStorage;
+      // si no hay ninguna guardada, respeta el modo oscuro del sistema.
+      (function () {
+        try {
+          var guardado = localStorage.getItem("sisges-theme");
+          var tema = guardado || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+          document.documentElement.setAttribute("data-theme", tema);
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

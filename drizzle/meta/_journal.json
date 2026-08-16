@@ -1,0 +1,55 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1786891895136,
+      "tag": "0000_fantastic_wraith",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1786894276296,
+      "tag": "0001_cheerful_chat",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1786895943819,
+      "tag": "0002_numerous_blacklash",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1786896969281,
+      "tag": "0003_greedy_zarda",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1786899723478,
+      "tag": "0004_true_mephistopheles",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1786913144200,
+      "tag": "0005_hard_blizzard",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1786914062289,
+      "tag": "0006_backfill_inventariada",
+      "breakpoints": true
+    }
+  ]
+}

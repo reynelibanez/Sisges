@@ -1,0 +1,1870 @@
+{
+  "id": "0a40156b-87d0-43a4-bc33-a0cc18520edf",
+  "prevId": "76efbca8-e80e-48dc-bc31-d5c39e16336b",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.bajaspor": {
+      "name": "bajaspor",
+      "schema": "",
+      "columns": {
+        "idbajaspor": {
+          "name": "idbajaspor",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "idbajas": {
+          "name": "idbajas",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "idalmacen": {
+          "name": "idalmacen",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "fecha": {
+          "name": "fecha",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "idproducto": {
+          "name": "idproducto",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "cantidad": {
+          "name": "cantidad",
+          "type": "numeric(12, 2)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "pcosto": {
+          "name": "pcosto",
+          "type": "numeric(12, 2)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "pventa": {
+          "name": "pventa",
+          "type": "numeric(12, 2)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "creado_por": {
+          "name": "creado_por",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "bajaspor_idbajas_ng_bajas_idbajas_fk": {
+          "name": "bajaspor_idbajas_ng_bajas_idbajas_fk",
+          "tableFrom": "bajaspor",
+          "tableTo": "ng_bajas",
+          "columnsFrom": [
+            "idbajas"
+          ],
+          "columnsTo": [
+            "idbajas"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "bajaspor_idalmacen_ng_almacen_idalmacen_fk": {
+          "name": "bajaspor_idalmacen_ng_almacen_idalmacen_fk",
+          "tableFrom": "bajaspor",
+          "tableTo": "ng_almacen",
+          "columnsFrom": [
+            "idalmacen"
+          ],
+          "columnsTo": [
+            "idalmacen"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "bajaspor_idproducto_ng_productos_idproducto_fk": {
+          "name": "bajaspor_idproducto_ng_productos_idproducto_fk",
+          "tableFrom": "bajaspor",
+          "tableTo": "ng_productos",
+          "columnsFrom": [
+            "idproducto"
+          ],
+          "columnsTo": [
+            "idproducto"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "bajaspor_creado_por_ng_usuarios_idusuario_fk": {
+          "name": "bajaspor_creado_por_ng_usuarios_idusuario_fk",
+          "tableFrom": "bajaspor",
+          "tableTo": "ng_usuarios",
+          "columnsFrom": [
+            "creado_por"
+          ],
+          "columnsTo": [
+            "idusuario"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.empresas": {
+      "name": "empresas",
+      "schema": "",
+      "columns": {
+        "idempresa": {
+          "name": "idempresa",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "nombre": {
+          "name": "nombre",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "activa": {
+          "name": "activa",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "creada_en": {
+          "name": "creada_en",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.il_existencias": {
+      "name": "il_existencias",
+      "schema": "",
+      "columns": {
+        "idexistencia": {
+          "name": "idexistencia",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "idempresa": {
+          "name": "idempresa",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "idalmacen": {
+          "name": "idalmacen",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "idproducto": {
+          "name": "idproducto",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "saldo": {
+          "name": "saldo",
+          "type": "numeric(14, 2)",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'0'"
+        }
+      },
+      "indexes": {
+        "il_existencias_almacen_producto_idx": {
+          "name": "il_existencias_almacen_producto_idx",
+          "columns": [
+            {
+              "expression": "idalmacen",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "idproducto",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "il_existencias_idempresa_empresas_idempresa_fk": {
+          "name": "il_existencias_idempresa_empresas_idempresa_fk",
+          "tableFrom": "il_existencias",
+          "tableTo": "empresas",
+          "columnsFrom": [
+            "idempresa"
+          ],
+          "columnsTo": [
+            "idempresa"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "il_existencias_idalmacen_ng_almacen_idalmacen_fk": {
+          "name": "il_existencias_idalmacen_ng_almacen_idalmacen_fk",
+          "tableFrom": "il_existencias",
+          "tableTo": "ng_almacen",
+          "columnsFrom": [
+            "idalmacen"
+          ],
+          "columnsTo": [
+            "idalmacen"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "il_existencias_idproducto_ng_productos_idproducto_fk": {
+          "name": "il_existencias_idproducto_ng_productos_idproducto_fk",
+          "tableFrom": "il_existencias",
+          "tableTo": "ng_productos",
+          "columnsFrom": [
+            "idproducto"
+          ],
+          "columnsTo": [
+            "idproducto"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.il_extracciones": {
+      "name": "il_extracciones",
+      "schema": "",
+      "columns": {
+        "idextraccion": {
+          "name": "idextraccion",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "idempresa": {
+          "name": "idempresa",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "idalmacen": {
+          "name": "idalmacen",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "fecha": {
+          "name": "fecha",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "importe": {
+          "name": "importe",
+          "type": "numeric(14, 2)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "nota": {
+          "name": "nota",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "creado_por": {
+          "name": "creado_por",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "creado_en": {
+          "name": "creado_en",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "il_extracciones_idempresa_empresas_idempresa_fk": {
+          "name": "il_extracciones_idempresa_empresas_idempresa_fk",
+          "tableFrom": "il_extracciones",
+          "tableTo": "empresas",
+          "columnsFrom": [
+            "idempresa"
+          ],
+          "columnsTo": [
+            "idempresa"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "il_extracciones_idalmacen_ng_almacen_idalmacen_fk": {
+          "name": "il_extracciones_idalmacen_ng_almacen_idalmacen_fk",
+          "tableFrom": "il_extracciones",
+          "tableTo": "ng_almacen",
+          "columnsFrom": [
+            "idalmacen"
+          ],
+          "columnsTo": [
+            "idalmacen"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "il_extracciones_creado_por_ng_usuarios_idusuario_fk": {
+          "name": "il_extracciones_creado_por_ng_usuarios_idusuario_fk",
+          "tableFrom": "il_extracciones",
+          "tableTo": "ng_usuarios",
+          "columnsFrom": [
+            "creado_por"
+          ],
+          "columnsTo": [
+            "idusuario"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.il_recepciones": {
+      "name": "il_recepciones",
+      "schema": "",
+      "columns": {
+        "idrecepcion": {
+          "name": "idrecepcion",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "idempresa": {
+          "name": "idempresa",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "noconsecutivo": {
+          "name": "noconsecutivo",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "idalmacen": {
+          "name": "idalmacen",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "fecha": {
+          "name": "fecha",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "entregadapor": {
+          "name": "entregadapor",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "inventariada": {
+          "name": "inventariada",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "nota": {
+          "name": "nota",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "creado_por": {
+          "name": "creado_por",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "il_recepciones_idempresa_empresas_idempresa_fk": {
+          "name": "il_recepciones_idempresa_empresas_idempresa_fk",
+          "tableFrom": "il_recepciones",
+          "tableTo": "empresas",
+          "columnsFrom": [
+            "idempresa"
+          ],
+          "columnsTo": [
+            "idempresa"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "il_recepciones_idalmacen_ng_almacen_idalmacen_fk": {
+          "name": "il_recepciones_idalmacen_ng_almacen_idalmacen_fk",
+          "tableFrom": "il_recepciones",
+          "tableTo": "ng_almacen",
+          "columnsFrom": [
+            "idalmacen"
+          ],
+          "columnsTo": [
+            "idalmacen"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "il_recepciones_creado_por_ng_usuarios_idusuario_fk": {
+          "name": "il_recepciones_creado_por_ng_usuarios_idusuario_fk",
+          "tableFrom": "il_recepciones",
+          "tableTo": "ng_usuarios",
+          "columnsFrom": [
+            "creado_por"
+          ],
+          "columnsTo": [
+            "idusuario"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.il_recepciones_detalle": {
+      "name": "il_recepciones_detalle",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "idrecepcion": {
+          "name": "idrecepcion",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "idproducto": {
+          "name": "idproducto",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "pcosto": {
+          "name": "pcosto",
+          "type": "numeric(12, 2)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "pventa": {
+          "name": "pventa",
+          "type": "numeric(12, 2)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "cantidad": {
+          "name": "cantidad",
+          "type": "numeric(12, 2)",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "il_recepciones_detalle_idrecepcion_il_recepciones_idrecepcion_fk": {
+          "name": "il_recepciones_detalle_idrecepcion_il_recepciones_idrecepcion_fk",
+          "tableFrom": "il_recepciones_detalle",
+          "tableTo": "il_recepciones",
+          "columnsFrom": [
+            "idrecepcion"
+          ],
+          "columnsTo": [
+            "idrecepcion"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "il_recepciones_detalle_idproducto_ng_productos_idproducto_fk": {
+          "name": "il_recepciones_detalle_idproducto_ng_productos_idproducto_fk",
+          "tableFrom": "il_recepciones_detalle",
+          "tableTo": "ng_productos",
+          "columnsFrom": [
+            "idproducto"
+          ],
+          "columnsTo": [
+            "idproducto"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.il_transferencias": {
+      "name": "il_transferencias",
+      "schema": "",
+      "columns": {
+        "idtransferencia": {
+          "name": "idtransferencia",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "idempresa": {
+          "name": "idempresa",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "noconsecutivo": {
+          "name": "noconsecutivo",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "fecha": {
+          "name": "fecha",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "origen": {
+          "name": "origen",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "destino": {
+          "name": "destino",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "inventariada": {
+          "name": "inventariada",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "nota": {
+          "name": "nota",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "creado_por": {
+          "name": "creado_por",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "il_transferencias_idempresa_empresas_idempresa_fk": {
+          "name": "il_transferencias_idempresa_empresas_idempresa_fk",
+          "tableFrom": "il_transferencias",
+          "tableTo": "empresas",
+          "columnsFrom": [
+            "idempresa"
+          ],
+          "columnsTo": [
+            "idempresa"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "il_transferencias_origen_ng_almacen_idalmacen_fk": {
+          "name": "il_transferencias_origen_ng_almacen_idalmacen_fk",
+          "tableFrom": "il_transferencias",
+          "tableTo": "ng_almacen",
+          "columnsFrom": [
+            "origen"
+          ],
+          "columnsTo": [
+            "idalmacen"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "il_transferencias_destino_ng_almacen_idalmacen_fk": {
+          "name": "il_transferencias_destino_ng_almacen_idalmacen_fk",
+          "tableFrom": "il_transferencias",
+          "tableTo": "ng_almacen",
+          "columnsFrom": [
+            "destino"
+          ],
+          "columnsTo": [
+            "idalmacen"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "il_transferencias_creado_por_ng_usuarios_idusuario_fk": {
+          "name": "il_transferencias_creado_por_ng_usuarios_idusuario_fk",
+          "tableFrom": "il_transferencias",
+          "tableTo": "ng_usuarios",
+          "columnsFrom": [
+            "creado_por"
+          ],
+          "columnsTo": [
+            "idusuario"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.il_transferencias_detalle": {
+      "name": "il_transferencias_detalle",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "idtransferencia": {
+          "name": "idtransferencia",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "idproducto": {
+          "name": "idproducto",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "preciocosto": {
+          "name": "preciocosto",
+          "type": "numeric(12, 2)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "pventa": {
+          "name": "pventa",
+          "type": "numeric(12, 2)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "cantidad": {
+          "name": "cantidad",
+          "type": "numeric(12, 2)",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "il_transferencias_detalle_idtransferencia_il_transferencias_idtransferencia_fk": {
+          "name": "il_transferencias_detalle_idtransferencia_il_transferencias_idtransferencia_fk",
+          "tableFrom": "il_transferencias_detalle",
+          "tableTo": "il_transferencias",
+          "columnsFrom": [
+            "idtransferencia"
+          ],
+          "columnsTo": [
+            "idtransferencia"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "il_transferencias_detalle_idproducto_ng_productos_idproducto_fk": {
+          "name": "il_transferencias_detalle_idproducto_ng_productos_idproducto_fk",
+          "tableFrom": "il_transferencias_detalle",
+          "tableTo": "ng_productos",
+          "columnsFrom": [
+            "idproducto"
+          ],
+          "columnsTo": [
+            "idproducto"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.il_valesmonedas": {
+      "name": "il_valesmonedas",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "idvalesalida": {
+          "name": "idvalesalida",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "idmoneda": {
+          "name": "idmoneda",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tc": {
+          "name": "tc",
+          "type": "numeric(12, 4)",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'1'"
+        },
+        "importe": {
+          "name": "importe",
+          "type": "numeric(14, 2)",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "il_valesmonedas_idvalesalida_il_valessalida_idvalesalida_fk": {
+          "name": "il_valesmonedas_idvalesalida_il_valessalida_idvalesalida_fk",
+          "tableFrom": "il_valesmonedas",
+          "tableTo": "il_valessalida",
+          "columnsFrom": [
+            "idvalesalida"
+          ],
+          "columnsTo": [
+            "idvalesalida"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "il_valesmonedas_idmoneda_ng_monedas_idmoneda_fk": {
+          "name": "il_valesmonedas_idmoneda_ng_monedas_idmoneda_fk",
+          "tableFrom": "il_valesmonedas",
+          "tableTo": "ng_monedas",
+          "columnsFrom": [
+            "idmoneda"
+          ],
+          "columnsTo": [
+            "idmoneda"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.il_valessalida": {
+      "name": "il_valessalida",
+      "schema": "",
+      "columns": {
+        "idvalesalida": {
+          "name": "idvalesalida",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "idempresa": {
+          "name": "idempresa",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "noconsecutivo": {
+          "name": "noconsecutivo",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "fecha": {
+          "name": "fecha",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "idalmacen": {
+          "name": "idalmacen",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "inventariada": {
+          "name": "inventariada",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "anulada": {
+          "name": "anulada",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "nota": {
+          "name": "nota",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "creado_por": {
+          "name": "creado_por",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "il_valessalida_idempresa_empresas_idempresa_fk": {
+          "name": "il_valessalida_idempresa_empresas_idempresa_fk",
+          "tableFrom": "il_valessalida",
+          "tableTo": "empresas",
+          "columnsFrom": [
+            "idempresa"
+          ],
+          "columnsTo": [
+            "idempresa"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "il_valessalida_idalmacen_ng_almacen_idalmacen_fk": {
+          "name": "il_valessalida_idalmacen_ng_almacen_idalmacen_fk",
+          "tableFrom": "il_valessalida",
+          "tableTo": "ng_almacen",
+          "columnsFrom": [
+            "idalmacen"
+          ],
+          "columnsTo": [
+            "idalmacen"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "il_valessalida_creado_por_ng_usuarios_idusuario_fk": {
+          "name": "il_valessalida_creado_por_ng_usuarios_idusuario_fk",
+          "tableFrom": "il_valessalida",
+          "tableTo": "ng_usuarios",
+          "columnsFrom": [
+            "creado_por"
+          ],
+          "columnsTo": [
+            "idusuario"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.il_valessalida_detalle": {
+      "name": "il_valessalida_detalle",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "idvalesalida": {
+          "name": "idvalesalida",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "idproducto": {
+          "name": "idproducto",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "idarea": {
+          "name": "idarea",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "preciocosto": {
+          "name": "preciocosto",
+          "type": "numeric(12, 2)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "pventa": {
+          "name": "pventa",
+          "type": "numeric(12, 2)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "cantidad": {
+          "name": "cantidad",
+          "type": "numeric(12, 2)",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "il_valessalida_detalle_idvalesalida_il_valessalida_idvalesalida_fk": {
+          "name": "il_valessalida_detalle_idvalesalida_il_valessalida_idvalesalida_fk",
+          "tableFrom": "il_valessalida_detalle",
+          "tableTo": "il_valessalida",
+          "columnsFrom": [
+            "idvalesalida"
+          ],
+          "columnsTo": [
+            "idvalesalida"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "il_valessalida_detalle_idproducto_ng_productos_idproducto_fk": {
+          "name": "il_valessalida_detalle_idproducto_ng_productos_idproducto_fk",
+          "tableFrom": "il_valessalida_detalle",
+          "tableTo": "ng_productos",
+          "columnsFrom": [
+            "idproducto"
+          ],
+          "columnsTo": [
+            "idproducto"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "il_valessalida_detalle_idarea_ng_areas_idarea_fk": {
+          "name": "il_valessalida_detalle_idarea_ng_areas_idarea_fk",
+          "tableFrom": "il_valessalida_detalle",
+          "tableTo": "ng_areas",
+          "columnsFrom": [
+            "idarea"
+          ],
+          "columnsTo": [
+            "idarea"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.il_ventadia": {
+      "name": "il_ventadia",
+      "schema": "",
+      "columns": {
+        "idventadia": {
+          "name": "idventadia",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "idempresa": {
+          "name": "idempresa",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "idalmacen": {
+          "name": "idalmacen",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "idproducto": {
+          "name": "idproducto",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "cantidad": {
+          "name": "cantidad",
+          "type": "numeric(14, 2)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "fecha": {
+          "name": "fecha",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "il_ventadia_idempresa_empresas_idempresa_fk": {
+          "name": "il_ventadia_idempresa_empresas_idempresa_fk",
+          "tableFrom": "il_ventadia",
+          "tableTo": "empresas",
+          "columnsFrom": [
+            "idempresa"
+          ],
+          "columnsTo": [
+            "idempresa"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "il_ventadia_idalmacen_ng_almacen_idalmacen_fk": {
+          "name": "il_ventadia_idalmacen_ng_almacen_idalmacen_fk",
+          "tableFrom": "il_ventadia",
+          "tableTo": "ng_almacen",
+          "columnsFrom": [
+            "idalmacen"
+          ],
+          "columnsTo": [
+            "idalmacen"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "il_ventadia_idproducto_ng_productos_idproducto_fk": {
+          "name": "il_ventadia_idproducto_ng_productos_idproducto_fk",
+          "tableFrom": "il_ventadia",
+          "tableTo": "ng_productos",
+          "columnsFrom": [
+            "idproducto"
+          ],
+          "columnsTo": [
+            "idproducto"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.ng_almacen": {
+      "name": "ng_almacen",
+      "schema": "",
+      "columns": {
+        "idalmacen": {
+          "name": "idalmacen",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "idempresa": {
+          "name": "idempresa",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "almacen": {
+          "name": "almacen",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "codigo": {
+          "name": "codigo",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "abierto": {
+          "name": "abierto",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "pventa": {
+          "name": "pventa",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "ng_almacen_idempresa_empresas_idempresa_fk": {
+          "name": "ng_almacen_idempresa_empresas_idempresa_fk",
+          "tableFrom": "ng_almacen",
+          "tableTo": "empresas",
+          "columnsFrom": [
+            "idempresa"
+          ],
+          "columnsTo": [
+            "idempresa"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.ng_areas": {
+      "name": "ng_areas",
+      "schema": "",
+      "columns": {
+        "idarea": {
+          "name": "idarea",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "idempresa": {
+          "name": "idempresa",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "area": {
+          "name": "area",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "principal": {
+          "name": "principal",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "ng_areas_idempresa_empresas_idempresa_fk": {
+          "name": "ng_areas_idempresa_empresas_idempresa_fk",
+          "tableFrom": "ng_areas",
+          "tableTo": "empresas",
+          "columnsFrom": [
+            "idempresa"
+          ],
+          "columnsTo": [
+            "idempresa"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.ng_bajas": {
+      "name": "ng_bajas",
+      "schema": "",
+      "columns": {
+        "idbajas": {
+          "name": "idbajas",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "idempresa": {
+          "name": "idempresa",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "bajas": {
+          "name": "bajas",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "ng_bajas_idempresa_empresas_idempresa_fk": {
+          "name": "ng_bajas_idempresa_empresas_idempresa_fk",
+          "tableFrom": "ng_bajas",
+          "tableTo": "empresas",
+          "columnsFrom": [
+            "idempresa"
+          ],
+          "columnsTo": [
+            "idempresa"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.ng_fechacierre": {
+      "name": "ng_fechacierre",
+      "schema": "",
+      "columns": {
+        "idfechacierre": {
+          "name": "idfechacierre",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "idempresa": {
+          "name": "idempresa",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "idalmacen": {
+          "name": "idalmacen",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "fecha": {
+          "name": "fecha",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "cerrado": {
+          "name": "cerrado",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "cerrado_por": {
+          "name": "cerrado_por",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "cerrado_en": {
+          "name": "cerrado_en",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "ng_fechacierre_almacen_fecha_idx": {
+          "name": "ng_fechacierre_almacen_fecha_idx",
+          "columns": [
+            {
+              "expression": "idalmacen",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "fecha",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "ng_fechacierre_idempresa_empresas_idempresa_fk": {
+          "name": "ng_fechacierre_idempresa_empresas_idempresa_fk",
+          "tableFrom": "ng_fechacierre",
+          "tableTo": "empresas",
+          "columnsFrom": [
+            "idempresa"
+          ],
+          "columnsTo": [
+            "idempresa"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "ng_fechacierre_idalmacen_ng_almacen_idalmacen_fk": {
+          "name": "ng_fechacierre_idalmacen_ng_almacen_idalmacen_fk",
+          "tableFrom": "ng_fechacierre",
+          "tableTo": "ng_almacen",
+          "columnsFrom": [
+            "idalmacen"
+          ],
+          "columnsTo": [
+            "idalmacen"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "ng_fechacierre_cerrado_por_ng_usuarios_idusuario_fk": {
+          "name": "ng_fechacierre_cerrado_por_ng_usuarios_idusuario_fk",
+          "tableFrom": "ng_fechacierre",
+          "tableTo": "ng_usuarios",
+          "columnsFrom": [
+            "cerrado_por"
+          ],
+          "columnsTo": [
+            "idusuario"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.ng_monedas": {
+      "name": "ng_monedas",
+      "schema": "",
+      "columns": {
+        "idmoneda": {
+          "name": "idmoneda",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "idempresa": {
+          "name": "idempresa",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "moneda": {
+          "name": "moneda",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tc": {
+          "name": "tc",
+          "type": "numeric(12, 4)",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'1'"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "ng_monedas_idempresa_empresas_idempresa_fk": {
+          "name": "ng_monedas_idempresa_empresas_idempresa_fk",
+          "tableFrom": "ng_monedas",
+          "tableTo": "empresas",
+          "columnsFrom": [
+            "idempresa"
+          ],
+          "columnsTo": [
+            "idempresa"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.ng_productos": {
+      "name": "ng_productos",
+      "schema": "",
+      "columns": {
+        "idproducto": {
+          "name": "idproducto",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "idempresa": {
+          "name": "idempresa",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "producto": {
+          "name": "producto",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "referencia": {
+          "name": "referencia",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "pcosto": {
+          "name": "pcosto",
+          "type": "numeric(12, 2)",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'0'"
+        },
+        "pventa": {
+          "name": "pventa",
+          "type": "numeric(12, 2)",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'0'"
+        },
+        "um": {
+          "name": "um",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "idtipo": {
+          "name": "idtipo",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "rutaimagen": {
+          "name": "rutaimagen",
+          "type": "varchar(500)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "elaborado": {
+          "name": "elaborado",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "activo": {
+          "name": "activo",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "ng_productos_idempresa_empresas_idempresa_fk": {
+          "name": "ng_productos_idempresa_empresas_idempresa_fk",
+          "tableFrom": "ng_productos",
+          "tableTo": "empresas",
+          "columnsFrom": [
+            "idempresa"
+          ],
+          "columnsTo": [
+            "idempresa"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "ng_productos_um_unidadmedida_id_fk": {
+          "name": "ng_productos_um_unidadmedida_id_fk",
+          "tableFrom": "ng_productos",
+          "tableTo": "unidadmedida",
+          "columnsFrom": [
+            "um"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "ng_productos_idtipo_ng_productostipos_idtipo_fk": {
+          "name": "ng_productos_idtipo_ng_productostipos_idtipo_fk",
+          "tableFrom": "ng_productos",
+          "tableTo": "ng_productostipos",
+          "columnsFrom": [
+            "idtipo"
+          ],
+          "columnsTo": [
+            "idtipo"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.ng_productosasociados": {
+      "name": "ng_productosasociados",
+      "schema": "",
+      "columns": {
+        "idproductosasociados": {
+          "name": "idproductosasociados",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "idproducto": {
+          "name": "idproducto",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "idproductoasociado": {
+          "name": "idproductoasociado",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "cantidad": {
+          "name": "cantidad",
+          "type": "numeric(12, 2)",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "ng_productosasociados_idproducto_ng_productos_idproducto_fk": {
+          "name": "ng_productosasociados_idproducto_ng_productos_idproducto_fk",
+          "tableFrom": "ng_productosasociados",
+          "tableTo": "ng_productos",
+          "columnsFrom": [
+            "idproducto"
+          ],
+          "columnsTo": [
+            "idproducto"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "ng_productosasociados_idproductoasociado_ng_productos_idproducto_fk": {
+          "name": "ng_productosasociados_idproductoasociado_ng_productos_idproducto_fk",
+          "tableFrom": "ng_productosasociados",
+          "tableTo": "ng_productos",
+          "columnsFrom": [
+            "idproductoasociado"
+          ],
+          "columnsTo": [
+            "idproducto"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.ng_productostipos": {
+      "name": "ng_productostipos",
+      "schema": "",
+      "columns": {
+        "idtipo": {
+          "name": "idtipo",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "idempresa": {
+          "name": "idempresa",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tipo": {
+          "name": "tipo",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "ng_productostipos_idempresa_empresas_idempresa_fk": {
+          "name": "ng_productostipos_idempresa_empresas_idempresa_fk",
+          "tableFrom": "ng_productostipos",
+          "tableTo": "empresas",
+          "columnsFrom": [
+            "idempresa"
+          ],
+          "columnsTo": [
+            "idempresa"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.ng_usuarios": {
+      "name": "ng_usuarios",
+      "schema": "",
+      "columns": {
+        "idusuario": {
+          "name": "idusuario",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "usuario": {
+          "name": "usuario",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "password_hash": {
+          "name": "password_hash",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "nombrecompleto": {
+          "name": "nombrecompleto",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "administrador": {
+          "name": "administrador",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "activo": {
+          "name": "activo",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "creado_en": {
+          "name": "creado_en",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "ng_usuarios_usuario_idx": {
+          "name": "ng_usuarios_usuario_idx",
+          "columns": [
+            {
+              "expression": "usuario",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.unidadmedida": {
+      "name": "unidadmedida",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "idempresa": {
+          "name": "idempresa",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "um": {
+          "name": "um",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "unidadmedida_idempresa_empresas_idempresa_fk": {
+          "name": "unidadmedida_idempresa_empresas_idempresa_fk",
+          "tableFrom": "unidadmedida",
+          "tableTo": "empresas",
+          "columnsFrom": [
+            "idempresa"
+          ],
+          "columnsTo": [
+            "idempresa"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.usuarios_empresas": {
+      "name": "usuarios_empresas",
+      "schema": "",
+      "columns": {
+        "idusuario": {
+          "name": "idusuario",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "idempresa": {
+          "name": "idempresa",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "inventario": {
+          "name": "inventario",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "caja": {
+          "name": "caja",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "contabilidad": {
+          "name": "contabilidad",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "personal": {
+          "name": "personal",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "finanzas": {
+          "name": "finanzas",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "facturas": {
+          "name": "facturas",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "herramientas": {
+          "name": "herramientas",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "reportes": {
+          "name": "reportes",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "es_admin_empresa": {
+          "name": "es_admin_empresa",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "usuarios_empresas_idusuario_ng_usuarios_idusuario_fk": {
+          "name": "usuarios_empresas_idusuario_ng_usuarios_idusuario_fk",
+          "tableFrom": "usuarios_empresas",
+          "tableTo": "ng_usuarios",
+          "columnsFrom": [
+            "idusuario"
+          ],
+          "columnsTo": [
+            "idusuario"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "usuarios_empresas_idempresa_empresas_idempresa_fk": {
+          "name": "usuarios_empresas_idempresa_empresas_idempresa_fk",
+          "tableFrom": "usuarios_empresas",
+          "tableTo": "empresas",
+          "columnsFrom": [
+            "idempresa"
+          ],
+          "columnsTo": [
+            "idempresa"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "usuarios_empresas_idusuario_idempresa_pk": {
+          "name": "usuarios_empresas_idusuario_idempresa_pk",
+          "columns": [
+            "idusuario",
+            "idempresa"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

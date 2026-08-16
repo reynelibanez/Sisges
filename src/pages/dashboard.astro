@@ -1,0 +1,18 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import DashboardApp from "@/components/DashboardApp";
+
+// El middleware ya redirige a /login si no hay sesión; acá el usuario
+// siempre existe.
+const user = Astro.locals.user!;
+---
+
+<BaseLayout title={`SisGes — ${user.empresaNombre}`}>
+  <DashboardApp
+    client:load
+    nombreCompleto={user.nombreCompleto}
+    empresaNombre={user.empresaNombre}
+    administrador={user.administrador}
+    permisos={user.permisos}
+  />
+</BaseLayout>

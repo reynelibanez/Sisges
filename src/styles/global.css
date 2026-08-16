@@ -1,0 +1,1289 @@
+:root {
+  --bg: #101a2e;
+  --bg-panel: #ffffff;
+  --bg-app: #eef1f8;
+  --sidebar-bg: #f8f9fc;
+  --border: #e4e7f0;
+  --text: #172033;
+  --text-muted: #6b7488;
+  --primary: #4f46e5;
+  --primary-dark: #4338ca;
+  --primary-soft: #eef0fe;
+  --danger: #dc2626;
+  --success: #16a34a;
+  --radius: 10px;
+  --shadow-sm: 0 1px 2px rgba(16, 26, 46, 0.06);
+  --shadow-md: 0 8px 24px rgba(16, 26, 46, 0.08);
+  /* Superficies secundarias (hover de filas, encabezados de grilla, cajas de
+     error/aviso, badges) — separadas de --bg-panel/--bg-app para que el
+     tema oscuro pueda darles un valor propio en vez de heredar blancos. */
+  --surface-subtle: #f8fafc;
+  --surface-hover: #f8fafc;
+  --surface-selected: #eff6ff;
+  --surface-error-bg: #fef2f2;
+  --surface-error-border: #fecaca;
+  --divider-soft: #f1f5f9;
+  --badge-ok-bg: #dcfce7;
+  --badge-off-bg: #fee2e2;
+  --badge-warn-bg: #fef3c7;
+  --warn: #b45309;
+  color-scheme: light;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+/* ---------- Tema oscuro ----------
+   Se activa con data-theme="dark" en <html> (ver BaseLayout.astro, que lo
+   fija antes de pintar según lo guardado en localStorage o la preferencia
+   del sistema) y se alterna con el botón de sol/luna del top-bar. */
+[data-theme="dark"] {
+  --bg: #0b1120;
+  --bg-panel: #161d2e;
+  --bg-app: #0f1524;
+  --sidebar-bg: #131a2b;
+  --border: #2a3348;
+  --text: #e7eaf3;
+  --text-muted: #939cb5;
+  --primary: #6366f1;
+  --primary-dark: #818cf8;
+  --primary-soft: #23294a;
+  --danger: #f87171;
+  --success: #4ade80;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --surface-subtle: #1b2338;
+  --surface-hover: #1e2740;
+  --surface-selected: #202b4d;
+  --surface-error-bg: #3a1f24;
+  --surface-error-border: #6b2b34;
+  --divider-soft: #232c42;
+  --badge-ok-bg: #16341f;
+  --badge-off-bg: #3a1f24;
+  --badge-warn-bg: #3a2f14;
+  --warn: #fbbf24;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg-app);
+  color: var(--text);
+  transition: background-color 0.15s, color 0.15s;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input,
+select,
+textarea {
+  background: var(--bg-panel);
+  color: var(--text);
+  color-scheme: inherit;
+}
+
+/* ---------- Botón de tema (sol/luna) en el top-bar ---------- */
+.theme-toggle {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: white;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ---------- Login ---------- */
+.login-shell {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+.login-card {
+  width: 360px;
+  background: var(--bg-panel);
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
+
+.login-card h1 {
+  font-size: 20px;
+  margin: 0 0 4px;
+}
+
+.login-card p.subtitle {
+  color: var(--text-muted);
+  margin: 0 0 24px;
+  font-size: 14px;
+}
+
+.field {
+  margin-bottom: 16px;
+}
+
+.field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--text-muted);
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 14px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 16px;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  width: 100%;
+}
+.btn-primary:hover {
+  background: var(--primary-dark);
+}
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: var(--bg-panel);
+  border-color: var(--border);
+  color: var(--text);
+}
+.btn-secondary:hover {
+  background: var(--surface-hover);
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: white;
+}
+
+.error-box {
+  background: var(--surface-error-bg);
+  color: var(--danger);
+  border: 1px solid var(--surface-error-border);
+  border-radius: var(--radius);
+  padding: 8px 12px;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+.empresa-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.empresa-item {
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  text-align: left;
+  background: var(--bg-panel);
+  font-size: 14px;
+  font-weight: 600;
+}
+.empresa-item:hover {
+  border-color: var(--primary);
+  background: var(--surface-selected);
+}
+
+/* ---------- Dashboard shell ---------- */
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-app);
+}
+
+.top-bar {
+  background: linear-gradient(180deg, #16213b 0%, var(--bg) 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  height: 60px;
+  gap: 28px;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  z-index: 5;
+}
+
+.top-bar .brand {
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.top-bar .brand-mark {
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--primary), #818cf8);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.top-tabs {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+}
+
+.top-tabs button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: transparent;
+  border: none;
+  color: #a8b1c7;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 13.5px;
+  font-weight: 600;
+  transition: background 0.15s, color 0.15s;
+}
+
+.top-tabs button:hover:not(.disabled) {
+  background: rgba(255, 255, 255, 0.06);
+  color: white;
+}
+
+.top-tabs button.active {
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.45);
+}
+
+.top-tabs button.disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.user-menu {
+  font-size: 13px;
+  color: #cbd5e1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-menu button {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: white;
+  padding: 6px 10px;
+  border-radius: var(--radius);
+  font-size: 12px;
+}
+
+.user-menu button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.module-body {
+  flex: 1;
+  padding: 22px;
+}
+
+.sub-tabs {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.sub-tabs button {
+  background: transparent;
+  border: none;
+  padding: 9px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  border-radius: 8px 8px 0 0;
+  border-bottom: 2px solid transparent;
+}
+
+.sub-tabs button:hover {
+  color: var(--text);
+  background: var(--primary-soft);
+}
+
+.sub-tabs button.active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+  background: var(--primary-soft);
+}
+
+/* ---------- Módulo con navegación lateral (Inventario, Herramientas…) ----------
+   Separa claramente las secciones (Nomenclador / Documentos / Reportes) en
+   vez de amontonar todo en una fila de pestañas, como pedía el usuario. */
+.module-shell {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.module-sidebar {
+  width: 236px;
+  flex-shrink: 0;
+  background: var(--sidebar-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  position: sticky;
+  top: 22px;
+}
+
+.module-sidebar-section-title {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  padding: 0 10px;
+  margin-bottom: 6px;
+}
+
+.module-sidebar-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.module-sidebar-button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.module-sidebar-button:hover {
+  background: var(--surface-selected);
+}
+
+.module-sidebar-button.active {
+  background: var(--primary);
+  color: white;
+}
+
+.module-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.panel {
+  background: var(--bg-panel);
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.panel-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+}
+
+.panel-toolbar h2 {
+  font-size: 15.5px;
+  margin: 0;
+  font-weight: 700;
+}
+
+/* ---------- DataGrid ---------- */
+.grid-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 18px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-subtle);
+  font-size: 13px;
+}
+
+.grid-toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.grid-groupby select {
+  margin-left: 6px;
+  padding: 5px 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 12.5px;
+}
+
+.btn-link {
+  background: transparent;
+  border: none;
+  color: var(--primary);
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 0;
+}
+.btn-link:hover {
+  text-decoration: underline;
+}
+
+.grid-wrap {
+  overflow: auto;
+  max-height: 60vh;
+}
+
+table.data-grid {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.data-grid thead th {
+  position: sticky;
+  top: 0;
+  background: var(--surface-subtle);
+  text-align: left;
+  padding: 10px 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+  z-index: 1;
+}
+
+.data-grid thead tr.grid-filter-row th {
+  top: 37px;
+  padding: 6px 8px;
+  font-weight: 400;
+}
+
+.data-grid thead tr.grid-filter-row input,
+.data-grid thead tr.grid-filter-row select {
+  width: 100%;
+  padding: 5px 7px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 12px;
+  background: var(--bg-panel);
+}
+
+.grid-filter-range {
+  display: flex;
+  gap: 4px;
+}
+.grid-filter-range input {
+  width: 68px !important;
+}
+
+.data-grid tbody td {
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--divider-soft);
+  white-space: nowrap;
+}
+
+.data-grid tbody tr:hover {
+  background: var(--surface-hover);
+  cursor: context-menu;
+}
+
+.data-grid tbody tr.selected {
+  background: var(--surface-selected);
+}
+
+.data-grid tr.grid-group-row {
+  background: var(--primary-soft);
+  cursor: pointer;
+}
+.data-grid tr.grid-group-row td {
+  padding: 8px 12px;
+  font-size: 12.5px;
+  color: var(--text);
+}
+.grid-group-toggle {
+  display: inline-block;
+  width: 14px;
+  color: var(--primary);
+}
+.grid-group-count {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.data-grid tfoot .grid-footer-row td {
+  padding: 8px 12px;
+  font-weight: 700;
+  font-size: 12.5px;
+  background: var(--surface-subtle);
+  border-top: 2px solid var(--border);
+  position: sticky;
+  bottom: 0;
+}
+
+.grid-pagination {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 18px;
+  border-top: 1px solid var(--border);
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+.grid-pagination select {
+  padding: 5px 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 12.5px;
+}
+
+.grid-pagination button {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text);
+}
+.grid-pagination button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.grid-pagination button:not(:disabled):hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.empty-state {
+  padding: 40px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.empty-state-hint {
+  margin-top: 4px;
+  font-size: 12px;
+  opacity: 0.75;
+}
+
+/* Menu contextual (clic derecho), igual que en el sistema de escritorio:
+   Nuevo / Modificar / Eliminar / Exportar */
+.context-menu {
+  position: fixed;
+  z-index: 1000;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  min-width: 160px;
+  padding: 4px;
+}
+
+.context-menu button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  padding: 8px 12px;
+  font-size: 13px;
+  border-radius: 4px;
+}
+
+.context-menu button:hover {
+  background: var(--surface-hover);
+}
+
+.context-menu button.danger {
+  color: var(--danger);
+}
+
+/* ---------- Modal ---------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 16px;
+  z-index: 1100;
+  overflow: auto;
+}
+
+.modal-card {
+  background: var(--bg-panel);
+  border-radius: 12px;
+  width: 100%;
+  max-width: 560px;
+  padding: 24px;
+}
+
+.modal-card h3 {
+  margin: 0 0 16px;
+  font-size: 16px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.form-grid .span-2 {
+  grid-column: span 2;
+}
+
+.checkbox-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+}
+.checkbox-field input {
+  width: auto;
+}
+
+.linea-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr auto;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.linea-row select,
+.linea-row input {
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.total-line {
+  text-align: right;
+  font-weight: 700;
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+}
+.badge-ok {
+  background: var(--badge-ok-bg);
+  color: var(--success);
+}
+.badge-off {
+  background: var(--badge-off-bg);
+  color: var(--danger);
+}
+.badge-warn {
+  background: var(--badge-warn-bg);
+  color: var(--warn);
+}
+
+/* ---------- Stat cards (resumen de caja, etc.) ---------- */
+.stat-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.stat-card {
+  background: var(--bg-app);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.stat-value {
+  font-size: 22px;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+.stat-sub {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* ---------- Vale / recibo imprimible ---------- */
+.receipt-print {
+  font-size: 13px;
+}
+
+.receipt-header {
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.receipt-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 8px;
+}
+
+.receipt-table th,
+.receipt-table td {
+  padding: 4px 6px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  font-size: 12px;
+}
+
+.receipt-total {
+  text-align: right;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.receipt-pagos {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.receipt-nota {
+  font-size: 12px;
+  font-style: italic;
+}
+
+/* ---------- Áreas abiertas en simultáneo (Caja) ---------- */
+.area-tabs {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 16px;
+  align-items: center;
+}
+
+.area-tab {
+  display: flex;
+  align-items: center;
+  background: var(--bg-app);
+  border: 1px solid var(--border);
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  overflow: hidden;
+}
+
+.area-tab.active {
+  background: var(--bg-panel);
+  border-color: var(--primary);
+}
+
+.area-tab-label {
+  background: transparent;
+  border: none;
+  padding: 8px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.area-tab.active .area-tab-label {
+  color: var(--primary);
+}
+
+.area-tab-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--success);
+  display: inline-block;
+}
+
+.area-tab-close {
+  background: transparent;
+  border: none;
+  padding: 6px 8px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.area-tab-close:hover {
+  color: var(--danger);
+}
+
+.area-tab-add {
+  background: transparent;
+  border: 1px dashed var(--border);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.area-tab-add:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.area-tab-body {
+  max-width: 640px;
+}
+
+.area-tab-body.caja-pos {
+  max-width: 780px;
+}
+
+/* ---------- POS de Caja (Cuenta Casa, Promoción, Efectivo/Vuelto, etc.) ---------- */
+.caja-pos-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.caja-novale {
+  color: var(--primary);
+}
+
+.caja-entry {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr auto;
+  gap: 10px;
+  align-items: end;
+  margin-bottom: 12px;
+}
+
+.caja-entry-add {
+  display: flex;
+}
+
+.caja-entry-add .btn {
+  width: auto;
+  white-space: nowrap;
+}
+
+.caja-cart-table {
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.caja-checks {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 12px;
+}
+
+.caja-promo-pct {
+  width: 64px !important;
+  padding: 4px 6px !important;
+}
+
+.caja-resumen {
+  margin-bottom: 12px;
+}
+
+.caja-resumen-linea {
+  text-align: right;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.caja-pago {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.caja-shortcuts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--border);
+}
+
+.caja-shortcuts .btn {
+  width: auto;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .receipt-print,
+  .receipt-print * {
+    visibility: visible;
+  }
+  .receipt-print {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+}
+
+/* ---------- Selects e inputs de fecha nativos: chrome más moderno ----------
+   No reemplaza el <select>/<input type=date> nativo en todos lados (harían
+   falta cientos de cambios), pero sí les quita la cara plana de sistema
+   operativo: flecha propia, mejor foco, hover, y en fecha un ícono
+   consistente en los dos temas. SelectField/DateRangeField (abajo) son la
+   versión completa para los casos con listas largas o rango de fechas. */
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M5 7.5L10 12.5L15 7.5' stroke='%236b7488' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 32px !important;
+  cursor: pointer;
+}
+
+input,
+select {
+  transition: border-color 0.12s, box-shadow 0.12s;
+}
+input:hover,
+select:hover {
+  border-color: var(--primary);
+}
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-soft);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: var(--date-icon-filter, none);
+  cursor: pointer;
+  border-radius: 4px;
+}
+[data-theme="dark"] input[type="date"] {
+  --date-icon-filter: invert(1) brightness(1.6);
+}
+
+/* ---------- DateRangeField ---------- */
+.date-range-field {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.date-range-inputs {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 8px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 8px 10px;
+}
+
+.date-range-inputs label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.date-range-inputs input[type="date"] {
+  border: none;
+  padding: 4px 2px;
+  font-size: 14px;
+  background: transparent;
+  color: var(--text);
+}
+.date-range-inputs input[type="date"]:focus,
+.date-range-inputs input[type="date"]:hover {
+  box-shadow: none;
+  border: none;
+}
+
+.date-range-sep {
+  color: var(--text-muted);
+  padding-bottom: 6px;
+  font-size: 13px;
+}
+
+.date-range-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip {
+  border: 1px solid var(--border);
+  background: var(--bg-panel);
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.12s;
+}
+.chip:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+.chip-active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: white;
+}
+
+/* ---------- SelectField (combobox con búsqueda) ---------- */
+.select-field {
+  position: relative;
+  width: 100%;
+}
+
+.select-field-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  background: var(--bg-panel);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  font-size: 14px;
+  text-align: left;
+  transition: border-color 0.12s, box-shadow 0.12s;
+}
+.select-field-trigger:hover {
+  border-color: var(--primary);
+}
+.select-field-open .select-field-trigger {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-soft);
+}
+.select-field-trigger:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.select-field-placeholder {
+  color: var(--text-muted);
+}
+
+.select-field-chevron {
+  flex: none;
+  color: var(--text-muted);
+  transition: transform 0.12s;
+}
+.select-field-open .select-field-chevron {
+  transform: rotate(180deg);
+}
+
+.select-field-popover {
+  position: absolute;
+  z-index: 40;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.select-field-search {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 13px;
+  background: var(--bg-app);
+  color: var(--text);
+}
+
+.select-field-list {
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.select-field-option {
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  color: var(--text);
+}
+.select-field-option-highlighted {
+  background: var(--surface-hover);
+}
+.select-field-option-selected {
+  color: var(--primary);
+  font-weight: 600;
+  background: var(--primary-soft);
+}
+
+.select-field-empty {
+  padding: 10px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* ---------- Toggle segmentado (p. ej. filtro Con/Sin existencia) ---------- */
+.segmented {
+  display: inline-flex;
+  background: var(--bg-app);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 3px;
+  gap: 2px;
+}
+
+.segmented button {
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 7px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.12s;
+}
+.segmented button:hover {
+  color: var(--text);
+}
+.segmented button.segmented-active {
+  background: var(--primary);
+  color: white;
+}
+
+/* ---------- Tarjetas de resumen (KPIs) para reportes ---------- */
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.kpi-card {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+}
+
+.kpi-card .kpi-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: 6px;
+}
+
+.kpi-card .kpi-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.kpi-card.kpi-positive .kpi-value {
+  color: var(--success);
+}
+.kpi-card.kpi-negative .kpi-value {
+  color: var(--danger);
+}
